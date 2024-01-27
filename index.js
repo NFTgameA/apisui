@@ -20,7 +20,19 @@ const connection = new Connection(clusterApiUrl("mainnet-beta"));
 app.get("/", (req, res) => {
   res.json("Meme Bot");
 });
-
+app.post("/", (req, res) => {
+  try {
+    const text = req.body.prompt;
+    ChatGPTService.generateCompletion(text).then(responseMsg => {
+      res.status(200).send({
+        bot: responseMsg
+      });
+    });
+  } catch (error) {
+    console.error(error)
+    res.status(500).send(error || 'Something went wrong');
+  }
+  });
 // Middlewares
 
 // Routes
