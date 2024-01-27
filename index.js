@@ -18,7 +18,7 @@ const { Connection, PublicKey, clusterApiUrl } = require("@solana/web3.js");
 const connection = new Connection(clusterApiUrl("mainnet-beta"));
 
 app.get("/", (req, res) => {
-  res.json("Meme Bot");
+  res.json("Dragon on Sui Bot");
 });
 app.post("/", (req, res) => {
   try {
